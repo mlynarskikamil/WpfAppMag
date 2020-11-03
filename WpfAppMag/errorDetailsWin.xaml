@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfAppMag.errorDetailsWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMag"
+        mc:Ignorable="d"
+        Title="Błędy analizy" Height="400" Width="650"
+        ResizeMode="NoResize">
+    <Grid>
+        <ScrollViewer Name="Contentscroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10,10,10,124">
+            <TextBox Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" Name="xmlInside" Height="237" Width="596"/>
+        </ScrollViewer>
+        <Button Content="Zamknij onkno" HorizontalAlignment="Left" Margin="371,277,0,0" VerticalAlignment="Top" Width="179" Height="27" Click="Button_Click"/>
+        <Button Content="Kopiuj zawartość" HorizontalAlignment="Left" Margin="56,277,0,0" VerticalAlignment="Top" Width="179" Height="27" Click="Button_Click_1"/>
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfAppMag.xmlInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMag"
+        mc:Ignorable="d"
+        Title="Informacje o XML" Height="450" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <ScrollViewer Name="Contentscroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10,10,10,82">
+            <TextBox Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" Name="xmlInside"/>
+        </ScrollViewer>
+        <Button Content="Zamknij onkno" HorizontalAlignment="Left" Margin="554,371,0,0" VerticalAlignment="Top" Width="179" Height="27" Click="Button_Click"/>
+        <Label Content="XML do wczytania do programu CAMUNDA MODELER" HorizontalAlignment="Left" Margin="253,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.384,-1.406"/>
+        <Button Content="Kopiuj XML" HorizontalAlignment="Left" Margin="59,371,0,0" VerticalAlignment="Top" Width="179" Height="27" Click="Button_Click_1"/>
+    </Grid>
+</Window>

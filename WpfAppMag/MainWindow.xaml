@@ -1,0 +1,57 @@
+﻿<Window x:Class="WpfAppMag.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMag"
+        mc:Ignorable="d"
+        Title="Aplikacja do testowania poprawności diagramów BPMN" Height="700" Width="1150" Loaded="Window_Loaded"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <local:XMLDBDataSet1 x:Key="xMLDBDataSet1"/>
+        <CollectionViewSource x:Key="tableViewSource1" Source="{Binding Table, Source={StaticResource xMLDBDataSet1}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource tableViewSource1}">
+        <Button Content="Wprowadź plik XML do analizy" HorizontalAlignment="Left" Margin="454,587,0,0" VerticalAlignment="Top" Width="188" Height="50" Click="Button_Click"/>
+        <DataGrid x:Name="tableDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource tableViewSource1}}" Margin="10,10,10,109" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn1" Binding="{Binding Id}" Header="Id" Width="35"/>
+                <DataGridTextColumn x:Name="nazwa_plikuColumn1" Binding="{Binding nazwa_pliku}" Header="Nazwa pliku" Width="80"/>
+                <DataGridTextColumn x:Name="struktura_xmlColumn1" Binding="{Binding struktura_xml}" Header="Struktura XML (Podwójnie kliknij w celu wyświetlenia całości)" Width="353">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="wynik_weryfikacjiColumn1" Binding="{Binding wynik_weryfikacji}" Header="Wynik weryfikacji" Width="110"/>
+                <DataGridTextColumn x:Name="bledy_weryfikacjiColumn1" Binding="{Binding bledy_weryfikacji}" Header="Błędy weryfikacji (Podwójnie kliknij w celu wyświetlenia całości)" Width="360">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick_ErrorDetails" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Usuń">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="deleteRowBtn" Content="Usuń rekord" Click="deleteRowBtn_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Analiza">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <Button x:Name="analyzeRowBtn" Content="Uruchom analize" Click="analyzeRowBtn_Click"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCellsPresenter">
+                    <Setter Property="Height" Value="35" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+    </Grid>
+</Window>
